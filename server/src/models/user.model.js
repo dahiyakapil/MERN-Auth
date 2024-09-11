@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema(
   //    email, password, name, lastLogin, isVarified, resetPasswordToken, resetPasswordExpiresAt, varificationToken, varificationTokenExpiresAt
@@ -26,7 +27,7 @@ const userSchema = new mongoose.Schema(
       default: Date.now,
     },
     isVarified: {
-      type: Date,
+      type: Boolean,
       default: false,
     },
     resetPasswordToken: {
@@ -35,10 +36,10 @@ const userSchema = new mongoose.Schema(
     resetPasswordExpiresAt: {
       type: Date,
     },
-    varificationToken: {
+    verificationToken: {
       type: String,
     },
-    varificationTokenExpiresAt: {
+    verificationTokenExpiresAt: {
       type: Date,
     },
   },
@@ -46,6 +47,4 @@ const userSchema = new mongoose.Schema(
 );
 
 export const User = mongoose.model("User", userSchema);
-
-
 
